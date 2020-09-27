@@ -1,28 +1,13 @@
 package com.cmdf.hipporollers;
 
 import android.app.Activity;
-//import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
-//import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
-//import com.cmdf.hipporollers.Character.GameView;
-//import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-
-//public class MainActivity extends AppCompatActivity {
 
 public class MainActivity extends Activity {
     @Override
@@ -34,21 +19,26 @@ public class MainActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_main);
+
+
+        Button about = findViewById(R.id.about);
+        Button newGame = findViewById(R.id.newGame);
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, About.class));
+            }
+        });
+
+        newGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GameView.class));
+            }
+        });
     }
 
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // respond to menu item selection
-//        switch (item.getItemId()) {
-//            case R.id.about:
-//                startActivity(new Intent(this, About.class));
-//                return true;
-//            case R.id.newGame:
-//                startActivity(new Intent(this, GameView.class));
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
     // SYD prior to Naadiya merge
 //    @Override

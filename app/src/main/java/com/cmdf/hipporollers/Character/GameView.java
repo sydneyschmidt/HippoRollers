@@ -1,6 +1,7 @@
 package com.cmdf.hipporollers.Character;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
@@ -13,7 +14,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     private MainThread thread;
     CharacterWalker characterNoHippo;
-    EnergyBar fullBar;
+    Bitmap fullBar;
+    Bitmap replay;
     EnergyBar threeBar;
     EnergyBar halfBar;
     EnergyBar endBar;
@@ -36,15 +38,16 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
         characterNoHippo = new CharacterWalker(BitmapFactory.decodeResource(getResources(),
                 R.drawable.woman_walking));
-        fullBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
-                R.drawable.full));
-        threeBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
-                R.drawable.three));
-        halfBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
-                R.drawable.half));
-        endBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
-                R.drawable.end));
-
+        fullBar = BitmapFactory.decodeResource(getResources(),
+                R.drawable.full);
+//        threeBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
+//                R.drawable.three));
+//        halfBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
+//                R.drawable.half));
+//        endBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
+//                R.drawable.end));
+        replay = BitmapFactory.decodeResource(getResources(),
+                R.drawable.replay_button);
         thread.setRunning(true);
         thread.start();
     }
@@ -72,6 +75,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
         if(canvas!=null) {
             characterNoHippo.draw(canvas);
+            canvas.drawBitmap(fullBar,700,100, null);
+            canvas.drawBitmap(replay,700,1800, null);
+            //fullBar.draw(canvas);
+
         }
     }
 }

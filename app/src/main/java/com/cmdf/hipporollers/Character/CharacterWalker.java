@@ -5,19 +5,26 @@ package com.cmdf.hipporollers.Character;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.widget.Button;
+
+import com.cmdf.hipporollers.R;
 
 public class CharacterWalker {
+    private static final Color WHITE = new Color(225,225,225);
+
     private Bitmap image;
     private EnergyBar bar;
+    private Button newGame;
 
     private String state;
+    //private Canvas canvas = new Canvas();
 
     private int x;
     private int y;
-    private int xV1 = 10; // may need to adjust
-    private int xV2 = 7;
-    private int xV3 = 5;
-    private int xV4 = 3;
+    private int xV1 = 4; // may need to adjust
+    private int xV2 = 3;
+    private int xV3 = 2;
+    private int xV4 = 1;
 
     private int width = Resources.getSystem().getDisplayMetrics().widthPixels;
     private int height = Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -27,8 +34,9 @@ public class CharacterWalker {
 
 
     public CharacterWalker(Bitmap bmp) {
+        //newGame = new Button();
         image = bmp;
-        state = "f";
+        state = "full";
         x = width; //starting coordinates
         y = height / 2;
     }
@@ -38,8 +46,10 @@ public class CharacterWalker {
     }
 
     public void draw(Canvas canvas) {
+        canvas.drawRGB(255,255,255);
         canvas.drawBitmap(image, x, y, null);
-        //bar.updateBar(); //TODO: fix to add EnergyBar
+        //canvas.drawBitmap();
+        //bar.draw(canvas); //TODO: fix to add EnergyBar
 
 
     }
@@ -49,6 +59,7 @@ public class CharacterWalker {
             x = 0;
             y = height / 2;
             state = "end";
+            //Button newGame = findViewById(R.id.newGame);
         }
         if (x <= quarter) {
             x -= xV4;

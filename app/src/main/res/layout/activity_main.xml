@@ -5,18 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C96D9FF4"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="sans-serif-condensed"
         android:gravity="center_horizontal"
-        android:text="Roller Hippos"
+        android:text="@string/gameName"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="36sp"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -25,9 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="293dp"
 
+        android:src="@drawable/water_roller_removebg_preview"
         app:layout_constraintBottom_toTopOf="@+id/about"
         app:layout_constraintTop_toBottomOf="@id/title"
-        android:src="@drawable/water_roller_removebg_preview"
 
         tools:ignore="ContentDescription"
         tools:layout_editor_absoluteX="0dp" />
@@ -37,7 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="28dp"
-        android:text="About"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/aboutLabel"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/waterHippo"
         tools:layout_editor_absoluteX="0dp" />
@@ -48,7 +52,8 @@
         android:layout_height="70dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="8dp"
-        android:text="New Game"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/newGameLabel"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/about"
         tools:layout_editor_absoluteX="0dp" />

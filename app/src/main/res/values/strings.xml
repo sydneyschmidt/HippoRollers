@@ -6,7 +6,7 @@
     <string name="aboutRollAHippo">About the Roll a Hippo Foundation</string>
     <string name="info">
         The Roll a Hippo Foundation supplies hippo water rollers to women in rural Africa to
-        transport water. This is a big improvement from the traditional method, which is to carry
+        transport water. This is a huge improvement from the traditional method, which is to carry
         water in five gallon buckets on the head. The water roller holds up to five times as much
         weight, but is much easier to transport, saving time and energy.
         To learn more about the foundation and how you can help, visit their website or check out
@@ -15,6 +15,9 @@
     <string name="websiteTitle">Roll a Hippo Website</string>
     <string name="videoTitle">In a Man\'s World Video</string>
     <string name="backToMenu">Back to main menu</string>
+    <string name="aboutLabel">About</string>
+    <string name="newGameLabel">New Game</string>
+    <string name="gameName">Hippo Rollers</string>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 </resources>

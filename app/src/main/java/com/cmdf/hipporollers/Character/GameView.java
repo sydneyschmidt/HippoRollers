@@ -35,7 +35,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override // might have to be updated if all load at once
     public void surfaceCreated(SurfaceHolder holder) {
         characterNoHippo = new CharacterWalker(BitmapFactory.decodeResource(getResources(),
-                R.drawable.tempimg));
+                R.drawable.woman_walking));
         fullBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
                 R.drawable.full));
         threeBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),

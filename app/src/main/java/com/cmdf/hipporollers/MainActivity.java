@@ -19,45 +19,50 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 
 //public class MainActivity extends AppCompatActivity {
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new AboutFragment()).commit();
     }
 
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // respond to menu item selection
-//        switch (item.getItemId()) {
-//            case R.id.about:
-//                startActivity(new Intent(this, About.class));
-//                return true;
-//            case R.id.newGame:
-//                startActivity(new Intent(this, GameView.class));
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
 
-    // SYD prior to Naadiya merge
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        setContentView(new GameView(this));
-//    }
+                    switch (item.getItemId()) {
+                        case R.id.nav_profile:
+                            selectedFragment = new ProfileFragment();
+                            break;
+                        case R.id.nav_question:
+                            selectedFragment = new QuestionFragment();
+                            break;
+                        case R.id.navi_map:
+                            selectedFragment = new MapFragment();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
+                    return true; //want to return clicked item
+                }
+            };
+
 
 }

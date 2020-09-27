@@ -1,68 +1,53 @@
 package com.cmdf.hipporollers;
 
 import android.app.Activity;
-//import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
-//import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
-//import com.cmdf.hipporollers.Character.GameView;
-//import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import android.widget.Button;
 
 
-//public class MainActivity extends AppCompatActivity {
-
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new AboutFragment()).commit();
+
+        Button about = findViewById(R.id.about);
+        Button newGame = findViewById(R.id.newGame);
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, About.class));
+            }
+        });
+
+        newGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GameView.class));
+            }
+        });
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
 
-                    switch (item.getItemId()) {
-                        case R.id.nav_profile:
-                            selectedFragment = new ProfileFragment();
-                            break;
-                        case R.id.nav_question:
-                            selectedFragment = new QuestionFragment();
-                            break;
-                        case R.id.navi_map:
-                            selectedFragment = new MapFragment();
-                            break;
-                    }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-
-                    return true; //want to return clicked item
-                }
-            };
-
+    // SYD prior to Naadiya merge
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        setContentView(new GameView(this));
+//    }
 
 }

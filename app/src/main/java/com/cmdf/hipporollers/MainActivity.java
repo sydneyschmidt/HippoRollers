@@ -10,7 +10,6 @@ import android.widget.Button;
 
 import com.cmdf.hipporollers.Character.GameView;
 
-
 public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

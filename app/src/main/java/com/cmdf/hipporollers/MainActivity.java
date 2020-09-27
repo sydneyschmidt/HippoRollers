@@ -8,6 +8,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.cmdf.hipporollers.Character.GameView;
+
 
 public class MainActivity extends Activity {
     @Override
@@ -34,7 +36,7 @@ public class MainActivity extends Activity {
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, GameView.class));
+                setContentView(new GameView (MainActivity.this));
             }
         });
     }

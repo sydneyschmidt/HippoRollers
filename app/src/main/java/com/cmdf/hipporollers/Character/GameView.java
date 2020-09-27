@@ -12,7 +12,12 @@ import com.cmdf.hipporollers.R;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     private MainThread thread;
-    CharacterNoHippo characterNoHippo;
+    CharacterWalker characterNoHippo;
+    EnergyBar fullBar;
+    EnergyBar threeBar;
+    EnergyBar halfBar;
+    EnergyBar endBar;
+
 
     public GameView(Context context) {
         super(context);
@@ -27,10 +32,18 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     }
 
-    @Override
+    @Override // might have to be updated if all load at once
     public void surfaceCreated(SurfaceHolder holder) {
-        characterNoHippo = new CharacterNoHippo(BitmapFactory.decodeResource(getResources(),
+        characterNoHippo = new CharacterWalker(BitmapFactory.decodeResource(getResources(),
                 R.drawable.tempimg));
+        fullBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
+                R.drawable.full));
+        threeBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
+                R.drawable.three));
+        halfBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
+                R.drawable.half));
+        endBar = new EnergyBar(BitmapFactory.decodeResource(getResources(),
+                R.drawable.end));
 
         thread.setRunning(true);
         thread.start();
